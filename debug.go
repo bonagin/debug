@@ -3,8 +3,7 @@ package debug
 import (
 	"fmt"
 	"log"
-
-	"github.com/bonagin/config"
+	"os"
 )
 
 type NewDebug string
@@ -28,9 +27,21 @@ var (
 	White   = Color("\033[1;37m%s\033[0m")
 )
 
+func debugMode() bool {
+	args := os.Args
+
+	for _, arg := range args {
+		if arg == "--debug" {
+			return true
+		}
+	}
+
+	return false
+}
+
 func Color(colorString string) func(...interface{}) string {
 	sprint := func(args ...interface{}) string {
-		if config.Get("DEBUG_MODE") != "ON" {
+		if !debugMode() {
 			return fmt.Sprint(args...)
 		}
 
@@ -57,7 +68,7 @@ func (title NewDebug) InfoP(args ...interface{}) {
 }
 
 func (title NewDebug) Dump(args ...interface{}) {
-	Log("[INFO]    : ", title+" - ", args)
+	Log(Purple("[INFO]    : "), Purple(title+" - "), Purple(args))
 }
 
 func (title NewDebug) Warning(args ...interface{}) {
@@ -74,7 +85,7 @@ func (title NewDebug) Fatal(args ...interface{}) {
 }
 
 func (title NewDebug) Printf(format string, v ...interface{}) {
-	if config.Get("DEBUG_MODE") == "ON" {
+	if !debugMode() {
 		log.Printf(format, v)
 		return
 	}
@@ -83,7 +94,7 @@ func (title NewDebug) Printf(format string, v ...interface{}) {
 }
 
 func Log(args ...interface{}) {
-	if config.Get("DEBUG_MODE") == "ON" {
+	if !debugMode() {
 		log.Println(args)
 		return
 	}
