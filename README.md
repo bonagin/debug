@@ -49,14 +49,6 @@ Add the config flag when running the exercutable
 $ /path/to/exercutable --debug
 ```
 
-```diff
-- [Alert]     : This is an alert
-+ [SUCCESS]   : This is an update
-! [WARNING]   : This is a warning
-# [INFO]      : This is a notification
-@@ [DUMP]      : This is a dump (and bold)@@
-```
-
 ## License
 Go-MySQL-Driver is licensed under the [Mozilla Public License Version 2.0](https://raw.github.com/go-sql-driver/mysql/master/LICENSE)
 
