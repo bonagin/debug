@@ -21,7 +21,7 @@ Custom debug loging library
 
 ## Installation
 ```bash
-$ go get -u github.com/bonagin/debug
+go get -u github.com/bonagin/debug
 ```
 Make sure [Git is installed](https://git-scm.com/downloads) on your machine and in your system's `PATH`.
 
