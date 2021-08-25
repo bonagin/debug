@@ -7,7 +7,6 @@ Custom debug loging library
   * [Requirements](#requirements)
   * [Installation](#installation)
   * [Usage](#usage)
-  * [Note](#note)
   * [License](#license)
 
 ---------------------------------------
