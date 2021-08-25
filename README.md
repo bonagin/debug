@@ -32,9 +32,9 @@ import (
 )
 
 // Initialize the debug library using the application name as the argument
-const {
+const (
   log = debug.NewDebug("test")
-}
+)
 
 // Make sure that "log" is not imported as this will cause a conflict
 log.Alert("This is an alert")
