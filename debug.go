@@ -52,30 +52,51 @@ func Color(colorString string) func(...interface{}) string {
 }
 
 func (title NewDebug) Success(args ...interface{}) {
+	if !debugMode() {
+		return
+	}
 	Log(Succ("[SUCCESS] : "), Succ(title+" - "), Succ(args))
 }
 
 func (title NewDebug) Info(args ...interface{}) {
+	if !debugMode() {
+		return
+	}
 	Log("[INFO]    : ", title+" - ", args)
 }
 
 func (title NewDebug) InfoT(args ...interface{}) {
+	if !debugMode() {
+		return
+	}
 	Log(Teal("[INFO]    : "), Teal(title+" - "), Teal(args))
 }
 
 func (title NewDebug) InfoP(args ...interface{}) {
+	if !debugMode() {
+		return
+	}
 	Log(Purple("[INFO]    : "), Purple(title+" - "), Purple(args))
 }
 
 func (title NewDebug) Dump(args ...interface{}) {
+	if !debugMode() {
+		return
+	}
 	Log(Purple("[INFO]    : "), Purple(title+" - "), Purple(args))
 }
 
 func (title NewDebug) Warning(args ...interface{}) {
+	if !debugMode() {
+		return
+	}
 	Log(Warn("[WARNING] : "), Warn(title+" - "), Warn(args))
 }
 
 func (title NewDebug) Alert(args ...interface{}) {
+	if !debugMode() {
+		return
+	}
 	Log(Fata("[ALERT]   : "), Fata(title+" - "), Fata(args))
 }
 
@@ -86,7 +107,13 @@ func (title NewDebug) Fatal(args ...interface{}) {
 
 func (title NewDebug) Printf(format string, v ...interface{}) {
 	if !debugMode() {
-		log.Printf(format, v)
+		return
+	}
+	fmt.Printf(format, v)
+}
+
+func (title NewDebug) Println(format string, v ...interface{}) {
+	if !debugMode() {
 		return
 	}
 
