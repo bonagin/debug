@@ -102,14 +102,14 @@ func (title NewDebug) Alert(args ...interface{}) {
 
 func (title NewDebug) Fatal(args ...interface{}) {
 	Log(Fata("[FATAL]   : "), Fata(title+" - "), Fata(args))
-	log.Fatal(args)
+	log.Fatal(args...)
 }
 
 func (title NewDebug) Printf(format string, v ...interface{}) {
 	if !debugMode() {
 		return
 	}
-	fmt.Printf(format, v)
+	fmt.Printf(format, v...)
 }
 
 func (title NewDebug) Println(format string, v ...interface{}) {
@@ -117,14 +117,14 @@ func (title NewDebug) Println(format string, v ...interface{}) {
 		return
 	}
 
-	fmt.Printf(format, v)
+	fmt.Printf(format, v...)
 }
 
 func Log(args ...interface{}) {
 	if !debugMode() {
-		log.Println(args)
+		log.Println(args...)
 		return
 	}
 
-	fmt.Println(args)
+	fmt.Println(args...)
 }
