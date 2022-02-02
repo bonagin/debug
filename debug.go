@@ -94,9 +94,6 @@ func (title NewDebug) Warning(args ...interface{}) {
 }
 
 func (title NewDebug) Alert(args ...interface{}) {
-	if !debugMode() {
-		return
-	}
 	Log(Fata("[ALERT]   : "), Fata(title+" - "), Fata(args))
 }
 
